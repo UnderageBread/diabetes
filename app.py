@@ -19,7 +19,36 @@ import platform
 # elif platform.system() == "Darwin":
 #     plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']  # MacOS
 # plt.rcParams['axes.unicode_minus']=False 
-plt.rcParams['font.family'] = ['SimHei'] # Windows
+# plt.rcParams['font.family'] = ['SimHei'] # Windows
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import requests
+import os
+
+def setup_chinese_font():
+    # 下载中文字体文件
+    font_url = "https://github.com/adobe-fonts/source-han-sans/raw/release/OTF/SourceHanSansSC-Regular.otf"
+    font_path = "SourceHanSansSC-Regular.otf"
+    
+    if not os.path.exists(font_path):
+        try:
+            response = requests.get(font_url)
+            with open(font_path, 'wb') as f:
+                f.write(response.content)
+        except:
+            st.warning("字体下载失败，将使用默认字体")
+            return
+    
+    # 注册字体
+    if os.path.exists(font_path):
+        fm.fontManager.addfont(font_path)
+        plt.rcParams['font.family'] = ['Source Han Sans SC']
+    
+    plt.rcParams['axes.unicode_minus'] = False
+
+# 在streamlit app开始时调用
+setup_chinese_font()
+
 # 设置页面配置
 st.set_page_config(
     page_title="糖尿病预测决策树系统",
