@@ -39,7 +39,7 @@ st.set_page_config(
 )
 def load_custom_font():
     # 假设你把字体文件放在项目根目录
-    font_files = ['SimHei.ttf', 'msyh.ttc', 'NotoSansCJK-Regular.ttc']
+    font_files = ['simhei.ttf']
     
     for font_file in font_files:
         if os.path.exists(font_file):
