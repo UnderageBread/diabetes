@@ -556,7 +556,7 @@ else:
                     gini_results.sort(key=lambda x: x['信息增益'], reverse=True)
                     
                     # 显示结果
-                    col1, col2 = st.columns([1, 1])
+                    col1, col2 = st.columns([2, 1])
                     
                     with col1:
                         st.subheader("📋 基尼系数表")
