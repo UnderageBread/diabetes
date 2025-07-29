@@ -29,6 +29,14 @@ import matplotlib.font_manager as fm
 import os
 
 
+
+
+# 设置页面配置
+st.set_page_config(
+    page_title="糖尿病预测决策树系统",
+    page_icon="🌳",
+    layout="wide"
+)
 def load_custom_font():
     # 假设你把字体文件放在项目根目录
     font_files = ['SimHei.ttf', 'msyh.ttc', 'NotoSansCJK-Regular.ttc']
@@ -49,14 +57,6 @@ def load_custom_font():
     plt.rcParams['axes.unicode_minus'] = False
 
 load_custom_font()
-
-# 设置页面配置
-st.set_page_config(
-    page_title="糖尿病预测决策树系统",
-    page_icon="🌳",
-    layout="wide"
-)
-
 # 设置工作目录
 os.chdir(os.path.split(__file__)[0] if '__file__' in globals() else os.getcwd())
 
