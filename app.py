@@ -49,7 +49,6 @@ def load_custom_font():
             prop = fm.FontProperties(fname=font_file)
             font_name = prop.get_name()
             plt.rcParams['font.family'] = [font_name]
-            st.success(f"成功加载字体: {font_name}")
             break
     else:
         st.warning("未找到字体文件")
