@@ -24,30 +24,31 @@ import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 import requests
 import os
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import os
 
-def setup_chinese_font():
-    # 下载中文字体文件
-    font_url = "https://github.com/adobe-fonts/source-han-sans/raw/release/OTF/SourceHanSansSC-Regular.otf"
-    font_path = "SourceHanSansSC-Regular.otf"
+
+def load_custom_font():
+    # 假设你把字体文件放在项目根目录
+    font_files = ['SimHei.ttf', 'msyh.ttc', 'NotoSansCJK-Regular.ttc']
     
-    if not os.path.exists(font_path):
-        try:
-            response = requests.get(font_url)
-            with open(font_path, 'wb') as f:
-                f.write(response.content)
-        except:
-            st.warning("字体下载失败，将使用默认字体")
-            return
-    
-    # 注册字体
-    if os.path.exists(font_path):
-        fm.fontManager.addfont(font_path)
-        plt.rcParams['font.family'] = ['Source Han Sans SC']
+    for font_file in font_files:
+        if os.path.exists(font_file):
+            # 注册字体
+            fm.fontManager.addfont(font_file)
+            # 获取字体名称
+            prop = fm.FontProperties(fname=font_file)
+            font_name = prop.get_name()
+            plt.rcParams['font.family'] = [font_name]
+            st.success(f"成功加载字体: {font_name}")
+            break
+    else:
+        st.warning("未找到字体文件")
     
     plt.rcParams['axes.unicode_minus'] = False
 
-# 在streamlit app开始时调用
-setup_chinese_font()
+load_custom_font()
 
 # 设置页面配置
 st.set_page_config(
