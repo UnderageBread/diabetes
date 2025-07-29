@@ -565,7 +565,7 @@ else:
                             st.dataframe(results_df.style.format({
                                 '基尼系数': '{:.4f}',
                                 '信息增益': '{:.4f}'
-                            }))
+                            }),use_container_width=True)
                         except ImportError:
                             # 如果pyarrow有问题，使用表格显示
                             st.table(results_df.round(4))
