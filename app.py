@@ -14,11 +14,12 @@ import plotly.graph_objects as go
 import plotly.express as px
 import platform
 
-if platform.system() == "Windows":
-    plt.rcParams['font.family'] = ['SimHei'] # Windows
-elif platform.system() == "Darwin":
-    plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']  # MacOS
-plt.rcParams['axes.unicode_minus']=False 
+# if platform.system() == "Windows":
+#     plt.rcParams['font.family'] = ['SimHei'] # Windows
+# elif platform.system() == "Darwin":
+#     plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']  # MacOS
+# plt.rcParams['axes.unicode_minus']=False 
+plt.rcParams['font.family'] = ['SimHei'] # Windows
 # 设置页面配置
 st.set_page_config(
     page_title="糖尿病预测决策树系统",
